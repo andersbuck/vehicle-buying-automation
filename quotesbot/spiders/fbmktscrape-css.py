@@ -3,17 +3,18 @@ import scrapy
 
 
 class ToScrapeCSSSpider(scrapy.Spider):
-    name = "fbmktscrape-css"
+    name = "bdauctionscrape-css"
     start_urls = [
-        'https://www.facebook.com/marketplace/charlotte/vehicles/?vehicleMake=Jeep&vehicleModel=Jeep%20Cherokee&minVehicleYear=1997&maxVehicleYear=2001&sort=CREATION_TIME_DESCEND',
+        'http://www.bdaaofnc.com/runlist.asp',
     ]
 
     def parse(self, response):
-        for quote in response.css("div._7yc _3ogd"):
+        for quote in response.css("table tr"):
             yield {
-                'title': quote.css("a::title").extract_first(),
-                'price': quote.css("a div._7yd._4-u3::text").extract_first(),
-                'mileage': quote.css("a div._uc9._214v.fsm.fwn.fcg::text").extract_first()
+                'make': quote.css("td:nth-child(4)::text").extract_first(),
+                'model': quote.css("td:nth-child(6)::text").extract_first(),
+                'year': quote.css("td:nth-child(5)::text").extract_first(),
+                'miles': quote.css("td:nth-child(8)::text").extract_first()
             }
 
         next_page_url = response.css("li.next > a::attr(href)").extract_first()
