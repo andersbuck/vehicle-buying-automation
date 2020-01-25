@@ -11,9 +11,9 @@ class ToScrapeCSSSpider(scrapy.Spider):
     def parse(self, response):
         for quote in response.css("div._7yc _3ogd"):
             yield {
-                'title': quote.css("#marketplace-modal-dialog-title::title").extract_first(),
-                'price': quote.css("._f3l _4x3g::text").extract_first(),
-                'mileage': quote.css("._uc9 _214v fsm fwn fcg::text").extract_first()
+                'title': quote.css("a::title").extract_first(),
+                'price': quote.css("a div._7yd._4-u3::text").extract_first(),
+                'mileage': quote.css("a div._uc9._214v.fsm.fwn.fcg::text").extract_first()
             }
 
         next_page_url = response.css("li.next > a::attr(href)").extract_first()
