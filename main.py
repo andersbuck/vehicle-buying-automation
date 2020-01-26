@@ -10,5 +10,6 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), c
 
 # Now you can start using Selenium
 
-driver.get("https://mobile.facebook.com/marketplace/charlotte/?radius_in_km=161&query=jeep+cherokee")
+#driver.get("https://mobile.facebook.com/marketplace/charlotte/?radius_in_km=161&query=jeep+cherokee")
+driver.get("https://www.facebook.com/marketplace/charlotte/vehicles/?vehicleMake=Jeep&vehicleModel=Jeep%20Cherokee&minVehicleYear=1997&maxVehicleYear=2001&sort=CREATION_TIME_DESCEND")
 print(driver.page_source)
