@@ -2,6 +2,7 @@ from selenium import webdriver
 import os
 import sys
 import time
+import copartscrape
 
 # Configure Selenium 
 
@@ -23,5 +24,7 @@ else:
 driver = webdriver.Chrome(executable_path=chrome_driver, chrome_options=chrome_options)
 
 # Start Selenium script
+
+copartscrape.scrape(driver)
 
 driver.close()
